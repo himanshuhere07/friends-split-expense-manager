@@ -47,12 +47,3 @@ Aryan owes Rs.175.0
 Himanshu should receive Rs.175.0
 ```
 
-## Things I'd add later
-
-- Saving expenses to a file so they persist between runs (haven't learned file handling properly yet)
-- A "settle up" suggestion that minimizes the number of transactions needed
-- Splitting expenses unevenly (right now everyone in the split pays an equal share)
-
-## Why I made this
-
-Most of my earlier practice projects (calculator, grade report generator, quiz game) were basically tutorial-level stuff to get comfortable with syntax. This one actually solves a problem I have right now, and forced me to think about how to structure data (dicts inside lists, tuples for immutability) instead of just writing straight-line code.
