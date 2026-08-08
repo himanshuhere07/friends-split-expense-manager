@@ -11,6 +11,7 @@ I built this because I'm moving into a PG with my friend for college and we alre
 - Calculate balances - tells you who should receive money and who owes money
 - Category wise spending breakdown (groceries vs bills vs other stuff)
 - Shows who has paid the most overall
+- Search expenses by category
 
 ## How it works
 

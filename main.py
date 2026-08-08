@@ -157,6 +157,26 @@ def who_paid_most():
     print(f"\n{top_spender} has paid the most overall - Rs.{balances[top_spender]}\n")
 
 
+def search_by_category():
+    if len(expenses) == 0:
+        print("No expenses yet.\n")
+        return
+
+    search_term = input("Enter category to search: ").strip().title()
+    found = [e for e in expenses if e["category"] == search_term]
+
+    if len(found) == 0:
+        print(f"No expenses found for {search_term}.\n")
+        return
+
+    print(f"\n--- Expenses for {search_term} ---")
+    total = 0
+    for e in found:
+        print(f"{e['payer']} paid Rs.{e['amount']} (split: {', '.join(e['split_between'])})")
+        total += e["amount"]
+    print(f"Total for {search_term}: Rs.{total}\n")
+
+
 def main_menu():
     while True:
         print(" FRIENDS SPLIT MENU ")
@@ -165,9 +185,10 @@ def main_menu():
         print("3. Show who owes what")
         print("4. Category wise spending")
         print("5. Who paid the most")
-        print("6. Exit")
+        print("6. Search by category")
+        print("7. Exit")
 
-        choice = input("Enter choice (1-6): ")
+        choice = input("Enter choice (1-7): ")
 
         if choice == "1":
             add_expense()
@@ -180,10 +201,12 @@ def main_menu():
         elif choice == "5":
             who_paid_most()
         elif choice == "6":
+            search_by_category()
+        elif choice == "7":
             print("Bye! Settle up before someone gets annoyed.")
             break
         else:
-            print("Enter a number between 1 and 6.\n")
+            print("Enter a number between 1 and 7.\n")
 
 
 if __name__ == "__main__":
