@@ -159,7 +159,7 @@ def who_paid_most():
 
 def main_menu():
     while True:
-        print("===== PG SPLIT MENU =====")
+        print(" FRIENDS SPLIT MENU ")
         print("1. Add an expense")
         print("2. Show all expenses")
         print("3. Show who owes what")
