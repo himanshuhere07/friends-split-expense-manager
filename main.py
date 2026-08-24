@@ -177,6 +177,43 @@ def search_by_category():
     print(f"Total for {search_term}: Rs.{total}\n")
 
 
+def settle_up():
+    # figure out who needs to pay who, with the fewest number of transactions
+    balances = calculate_balances()
+
+    creditors = []
+    debtors = []
+    for person, amount in balances.items():
+        amount = round(amount, 2)
+        if amount > 0:
+            creditors.append([person, amount])
+        elif amount < 0:
+            debtors.append([person, -amount])
+
+    if len(creditors) == 0 and len(debtors) == 0:
+        print("Everyone is already settled up.\n")
+        return
+
+    print("\n--- Settle Up Suggestions ---")
+    i = 0
+    j = 0
+    while i < len(debtors) and j < len(creditors):
+        debtor = debtors[i]
+        creditor = creditors[j]
+        pay_amount = min(debtor[1], creditor[1])
+
+        print(f"{debtor[0]} pays {creditor[0]} Rs.{round(pay_amount, 2)}")
+
+        debtor[1] -= pay_amount
+        creditor[1] -= pay_amount
+
+        if debtor[1] == 0:
+            i += 1
+        if creditor[1] == 0:
+            j += 1
+    print()
+
+
 def main_menu():
     while True:
         print(" FRIENDS SPLIT MENU ")
@@ -186,9 +223,10 @@ def main_menu():
         print("4. Category wise spending")
         print("5. Who paid the most")
         print("6. Search by category")
-        print("7. Exit")
+        print("7. Settle up (minimum transactions)")
+        print("8. Exit")
 
-        choice = input("Enter choice (1-7): ")
+        choice = input("Enter choice (1-8): ")
 
         if choice == "1":
             add_expense()
@@ -203,10 +241,12 @@ def main_menu():
         elif choice == "6":
             search_by_category()
         elif choice == "7":
+            settle_up()
+        elif choice == "8":
             print("Bye! Settle up before someone gets annoyed.")
             break
         else:
-            print("Enter a number between 1 and 7.\n")
+            print("Enter a number between 1 and 8.\n")
 
 
 if __name__ == "__main__":

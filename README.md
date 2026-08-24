@@ -12,12 +12,15 @@ I built this because I'm moving into a PG with my friend for college and we alre
 - Category wise spending breakdown (groceries vs bills vs other stuff)
 - Shows who has paid the most overall
 - Search expenses by category
+- Settle up suggestions - tells you the minimum number of payments needed so everyone's even, instead of everyone paying everyone
 
 ## How it works
 
 Every expense is stored as a dictionary with the payer, amount, category and who it's split between. The split is stored as a tuple since once you log an expense, the people it was split between shouldn't be changed. All the expenses live inside a list, and roommates are stored in a set so the same person can't accidentally get added twice.
 
 Balances are calculated by looping through every expense - the payer gets credited the full amount, and everyone included in the split gets their share deducted. Whatever's left over per person is their balance (positive means they're owed money, negative means they owe).
+
+For settling up, instead of everyone individually paying everyone else, the program separates people into creditors (owed money) and debtors (owe money), then matches the highest debtor against the highest creditor repeatedly until everyone's balance hits zero. This keeps the number of actual payments to a minimum.
 
 ## Concepts used
 
@@ -29,22 +32,8 @@ Balances are calculated by looping through every expense - the payer gets credit
 - Loops and conditionals
 - f-strings for all the output formatting
 - Basic error handling (try/except for invalid number input)
+- Basic greedy matching (highest debtor paid to highest creditor first, repeat until settled)
 
 No external libraries, no file handling, no OOP - kept it to what I've actually learned so far.
 
 ## How to run
-
-```
-python main.py
-```
-
-You'll get a menu with 6 options. Comes preloaded with 3 sample expenses between two roommates (Himanshu and Aryan) so you can see how it works immediately, then you can add your own.
-
-## Sample output
-
-```
---- Balance Summary ---
-Aryan owes Rs.175.0
-Himanshu should receive Rs.175.0
-```
-
