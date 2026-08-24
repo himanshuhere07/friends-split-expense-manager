@@ -1,6 +1,6 @@
 # Friends split - Roommate Expense Manager
-# Made this after moving into a PG with my roommate, we kept fighting over
-# who paid for what last month lol. So built a simple tracker for it.
+# Made this after moving into a PG with my roommate, we kept fighting over and over
+# who paid for what last month lol. So built a simple tracker for this.
 # Uses only core python stuff - dicts, lists, tuples, sets, loops, functions.
 
 # people staying in the PG (using a set so no duplicate names accidentally get added)
