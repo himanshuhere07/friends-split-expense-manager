@@ -6,7 +6,7 @@ I built this because I'm moving into a PG with my friend for college and we alre
 
 ## What it does
 
-- Add an expense (who paid, how much, what for, split between whom)
+- Adds an expense (who paid, how much, what for, split between whom)
 - Show all logged expenses with running total
 - Calculate balances - tells you who should receive money and who owes money
 - Category wise spending breakdown (groceries vs bills vs other stuff)
@@ -14,15 +14,15 @@ I built this because I'm moving into a PG with my friend for college and we alre
 - Search expenses by category
 - Settle up suggestions - tells you the minimum number of payments needed so everyone's even, instead of everyone paying everyone
 
-## How it works
+## The way it works
 
 Every expense is stored as a dictionary with the payer, amount, category and who it's split between. The split is stored as a tuple since once you log an expense, the people it was split between shouldn't be changed. All the expenses live inside a list, and roommates are stored in a set so the same person can't accidentally get added twice.
 
 Balances are calculated by looping through every expense - the payer gets credited the full amount, and everyone included in the split gets their share deducted. Whatever's left over per person is their balance (positive means they're owed money, negative means they owe).
 
-For settling up, instead of everyone individually paying everyone else, the program separates people into creditors (owed money) and debtors (owe money), then matches the highest debtor against the highest creditor repeatedly until everyone's balance hits zero. This keeps the number of actual payments to a minimum.
+For settling this up, instead of everyone individually paying everyone else, the program separates people into creditors (owed money) and debtors (owe money), then matches the highest debtor against the highest creditor repeatedly until everyone's balance hits zero. This keeps the number of actual payments to a minimum.
 
-## Concepts used
+## Concepts used in this
 
 - Dictionaries (expense records, balance tracking)
 - Lists (storing all expenses)
