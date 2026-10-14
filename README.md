@@ -36,4 +36,4 @@ For settling this up, instead of everyone individually paying everyone else, the
 
 No external libraries, no file handling, no OOP - kept it to what I've actually learned so far.
 
-## How to run
+
